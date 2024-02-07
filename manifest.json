@@ -2,10 +2,10 @@
     "manifest_version": 3,
     "name": "Custom IG DMs",
     "description": "This extension allows you to customize Instagram DMs and fixes the width on OperaGX side bar",
-    "version": "1.1",
+    "version": "1.2",
     "content_scripts": [
       {
-        "matches": ["https://*.instagram.com/direct/t/*"],
+        "matches": ["https://*.instagram.com/*"],
         "css": ["./injection/style.css"],
         "js": ["./injection/script.js"]
       }

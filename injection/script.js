@@ -27,32 +27,31 @@ let isFullScreen = false;
 // set the button svg to not full screen
 fullChatViewBtn.innerHTML = svgNotFullScreen;
 
-//* append button
-// document.body.appendChild(fullChatViewBtn);
+// const isInjected = false;
 
-/**--------------------------------------------
- *               WHEN DOM IS READY
- *---------------------------------------------**/
-
-setTimeout(function () {
-  const chat = document.getElementsByClassName(
-    "x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x193iq5w xeuugli x1r8uery x1iyjqo2 xs83m0k"
-  )[0];
-
-  const toolBar = document.querySelector('[aria-label="Audio Call"]');
-
-  const parent = toolBar.parentNode;
-  const grandParent = parent.parentNode;
-  const grandGrandParent = grandParent.parentNode;
-  grandGrandParent.insertAdjacentElement("beforeend", fullChatViewBtn);
+// create the listener
+window.addEventListener('resize', function() {
+  console.log('Resize detected! New size: ', window.innerWidth);
 
   if (window.innerWidth < 560) {
-    chat.classList.add('fullScreen');
-  }
+    const chat = document.getElementsByClassName(
+      "x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x193iq5w xeuugli x1r8uery x1iyjqo2 xs83m0k"
+    )[0];
+  
+    const toolBar = document.querySelector('[aria-label="Audio Call"]');
+  
+    const parent = toolBar.parentNode;
+    const grandParent = parent.parentNode;
+    const grandGrandParent = grandParent.parentNode;
+    grandGrandParent.insertAdjacentElement("beforeend", fullChatViewBtn);
 
-  fullChatViewBtn.onclick = () => {
-    isFullScreen = !isFullScreen;
-    fullChatViewBtn.innerHTML = isFullScreen ? svgFullScreen : svgNotFullScreen;
-    chat.classList.toggle("fullScreen");
-  };
-}, 5000); // 5000 milliseconds = 5 seconds
+    fullChatViewBtn.onclick = () => {
+      isFullScreen = !isFullScreen;
+      fullChatViewBtn.innerHTML = isFullScreen ? svgFullScreen : svgNotFullScreen;
+      chat.classList.toggle("fullScreen");
+    };
+
+    chat.classList.add("fullScreen");
+  }
+})
+
